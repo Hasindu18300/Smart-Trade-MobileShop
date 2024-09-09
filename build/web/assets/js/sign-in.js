@@ -3,7 +3,7 @@ async  function signIn() {
     const user_dto = {
 
         email: document.getElementById("email").value,
-        password: document.getElementById("password").value,
+        password: document.getElementById("password").value
     };
 
 
