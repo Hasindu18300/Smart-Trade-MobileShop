@@ -1,6 +1,10 @@
 async  function checkSignIn() {
 
-    const response = await fetch("CheckSignIn");
+    const response = await fetch(
+            "CheckSignIn"
+            );
+
+
     if (response.ok) {
 
         const json = await response.json();
@@ -43,7 +47,7 @@ async  function checkSignIn() {
 
         //display last 3 porducts
 
-        const productList = json.products;
+                const productList = json.products;
         let i = 1;
         productList.forEach(product => {
 
@@ -57,43 +61,72 @@ async  function checkSignIn() {
 
         });
         $('.slider-thumb-activation-one').slick({
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                arrows: false,
-                dots: true,
-                focusOnSelect: false,
-                speed: 1000,
-                autoplay: true,
-                asNavFor: '.slider-content-activation-one',
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="fal fa-long-arrow-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="fal fa-long-arrow-right"></i></button>',
-                responsive: [{
-                        breakpoint: 991,
-                        settings: {
-                            slidesToShow: 1,
-                        }
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+            focusOnSelect: false,
+            speed: 1000,
+            autoplay: true,
+            asNavFor: '.slider-content-activation-one',
+            prevArrow: '<button class="slide-arrow prev-arrow"><i class="fal fa-long-arrow-left"></i></button>',
+            nextArrow: '<button class="slide-arrow next-arrow"><i class="fal fa-long-arrow-right"></i></button>',
+            responsive: [{
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 1,
                     }
-                ]
+                }
+            ]
 
-            });
-            
-            $('.slider-content-activation-one').slick({
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: false,
-                dots: false,
-                focusOnSelect: false,
-                speed: 500,
-                fade: true,
-                autoplay: false,
-                asNavFor: '.slider-thumb-activation-one',
-            });
+        });
+
+        $('.slider-content-activation-one').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            focusOnSelect: false,
+            speed: 500,
+            fade: true,
+            autoplay: false,
+            asNavFor: '.slider-thumb-activation-one',
+        });
 
         console.log(st_slide_container);
+    } else {
+        console.log(response);
     }
 }
+
+async function viewCart() {
+
+    const respone = await fetch("cart.html");
+
+    if (respone.ok) {
+
+        const cartHtmlText = await  respone.text();
+        const paser = new DOMParser();
+        const cartHtml = paser.parseFromString(cartHtmlText, "text/html");
+
+        const cart_main = cartHtml.querySelector("#cart-main");
+
+        document.querySelector(".main-wrapper").innerHTML = cart_main.innerHTML;
+        loadCartItems();
+
+
+    }
+}
+
+
+
+
+
+
+
+
 
 //function checkSignIn() {
 //    fetch("CheckSignIn").then(
