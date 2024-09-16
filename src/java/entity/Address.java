@@ -165,7 +165,7 @@ public class Address implements Serializable {
     @Column(name = "line2", nullable = false)
     private String line2;
 
-    @Column(name = "mobile", length = 45, nullable = false)
+    @Column(name = "mobile", length = 10, nullable = false)
     private String mobile;
 
     @Column(name = "postal_code", length = 10, nullable = false)

@@ -25,7 +25,7 @@ public class CheckSignIn extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+       
         JsonObject jsonObject = new JsonObject();
 
         Response_DTO response_DTO = new Response_DTO();

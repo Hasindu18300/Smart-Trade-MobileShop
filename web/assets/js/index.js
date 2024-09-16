@@ -15,8 +15,9 @@ async  function checkSignIn() {
 
         if (response_dto.success) {
             //sign in
-
+            
             const user = response_dto.content;
+            console.log(user);
 
 
             let st_quick_link = document.getElementById("st-quick-link");
@@ -28,7 +29,11 @@ async  function checkSignIn() {
             st_quick_link_li_2.remove();
 
             let new_li_tag1 = document.createElement("li");
-            new_li_tag1.innerHTML = user.first_name + " " + user.last_name;
+            let new_li_a_tag = document.createElement("a");
+            new_li_a_tag.href ="#";
+            
+            new_li_a_tag.innerHTML = user.first_name + " " + user.last_name;
+            new_li_tag1.appendChild(new_li_a_tag);
             st_quick_link.appendChild(new_li_tag1);
 
             let st_button_1 = document.getElementById("st-button-1");
@@ -47,7 +52,7 @@ async  function checkSignIn() {
 
         //display last 3 porducts
 
-                const productList = json.products;
+        const productList = json.products;
         let i = 1;
         productList.forEach(product => {
 
@@ -95,11 +100,14 @@ async  function checkSignIn() {
             asNavFor: '.slider-thumb-activation-one',
         });
 
-        console.log(st_slide_container);
+        //console.log(st_slide_container);
     } else {
         console.log(response);
     }
 }
+
+
+
 
 async function viewCart() {
 
